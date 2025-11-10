@@ -26,5 +26,5 @@ model User {
   role          Role      @relation(fields: [role_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "users_ibfk_1")
 
   @@index([role_id], map: "role_id")
-  @@map("users")
+  @@map("user")
 }
