@@ -13,9 +13,9 @@ export async function POST(req: Request) {
         { status: 400 }
       );
 
-    const user = await prisma.user.findUnique({
+    const user = await prisma.users.findUnique({
       where: { email },
-      include: { role: true },
+      include: { roles: true },
     });
     if (!user)
       return NextResponse.json(
@@ -33,14 +33,14 @@ export async function POST(req: Request) {
     const token = signToken({
       id: user.id,
       name: user.name,
-      role: user.role.name,
+      role: user.roles.name,
     });
 
     return NextResponse.json({
       token,
       user: {
         name: user.name,
-        role: user.role.name,
+        role: user.roles.name,
         email: user.email,
       },
     });

@@ -16,14 +16,14 @@ export async function getUserFromAuthHeader(
   const token = parts[1];
   const decoded = verifyToken(token);
   if (!decoded || !decoded.id) return null;
-  const user = await prisma.user.findUnique({
+  const user = await prisma.users.findUnique({
     where: { id: Number(decoded.id) },
-    include: { role: true },
+    include: { roles: true },
   });
   if (!user) return null;
   return {
     id: user.id,
     name: user.name,
-    role: { id: user.role.id, name: user.role.name },
+    role: { id: user.roles.id, name: user.roles.name },
   };
 }
