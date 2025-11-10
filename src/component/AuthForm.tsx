@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Button, Input, Form, Typography, Spin, message, Alert } from "antd";
+import { Button, Input, Form, Typography, Spin, Alert } from "antd";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
